@@ -21,6 +21,7 @@ invalidSamples :: [Text]
 invalidSamples =
     [ "1"
     , "2"
+    , "929423640" -- control digit would be 10
     ]
 
 samples :: [Text]
