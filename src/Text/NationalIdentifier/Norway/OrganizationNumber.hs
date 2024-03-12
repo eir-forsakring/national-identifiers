@@ -1,6 +1,6 @@
 module Text.NationalIdentifier.Norway.OrganizationNumber
     ( OrganizationNumberNO
-    , toSevenDigits
+    , toNineDigits
     , mkOrganizationNumberNO
     )
 where
@@ -13,7 +13,7 @@ import Data.Text (Text)
 import Data.Text qualified as T
 import GHC.Generics (Generic)
 
-newtype OrganizationNumberNO = OrganizationNumberNO {toSevenDigits :: Text}
+newtype OrganizationNumberNO = OrganizationNumberNO {toNineDigits :: Text}
     deriving stock (Show, Eq, Ord, Generic)
     deriving newtype (ToJSON)
 
