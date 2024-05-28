@@ -37,6 +37,10 @@ spec = describe "mkPersonalNumberSE" $ do
     it "Fails to parse list of known invalid numbers" $ do
         rights (fmap mkPersonalNumberSE invalidSamples) `shouldBe` []
 
+    it "Can parse personal numbers with surrounding whitespace" $ do
+        toTwelveDigits <$> mkPersonalNumberSE "3701139051  " `shouldBe` Right test19thCentury
+        toTwelveDigits <$> mkPersonalNumberSE "  370113-9051" `shouldBe` Right test19thCentury
+
 invalidSamples :: [Text]
 invalidSamples =
     [ "4209186975"

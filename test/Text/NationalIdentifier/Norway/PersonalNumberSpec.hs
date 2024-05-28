@@ -14,6 +14,9 @@ spec = describe "mkPersonalNumberNO" $ do
         lefts (fmap mkPersonalNumberNO samples) `shouldBe` []
     it "Fails to parse list of known invalid numbers" $ do
         rights (fmap mkPersonalNumberNO invalidSamples) `shouldBe` []
+    it "Can parse despite surrounding whitespace" $ do
+        toElevenDigits <$> mkPersonalNumberNO "     09043949095" `shouldBe` Right "09043949095"
+        toElevenDigits <$> mkPersonalNumberNO "     09043949095\n" `shouldBe` Right "09043949095"
 
 invalidSamples :: [Text]
 invalidSamples =

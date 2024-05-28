@@ -16,6 +16,10 @@ spec = describe "parseOrganizationNumberSE" $ do
 
     it "Fails to parse list of known invalid numbers" $ do
         rights (fmap mkOrganizationNumberSE invalidSamples) `shouldBe` []
+    
+    it "Can parse numbers with surrounding whitespace" $ do
+        toTenDigits <$> mkOrganizationNumberSE "5591660617  " `shouldBe` Right "5591660617"
+        toTenDigits <$> mkOrganizationNumberSE "  559166-0617" `shouldBe` Right "5591660617"
 
 invalidSamples :: [Text]
 invalidSamples =

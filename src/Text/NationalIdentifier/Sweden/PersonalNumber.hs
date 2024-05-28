@@ -27,7 +27,7 @@ instance FromJSON PersonalNumberSE where
   parseJSON = withText "PersonalNumberSE" $ either fail pure . mkPersonalNumberSE
 
 mkPersonalNumberSE :: Text -> Either String PersonalNumberSE
-mkPersonalNumberSE = runP parsePersonalNumberSE
+mkPersonalNumberSE = runP parsePersonalNumberSE . T.strip
 
 runP :: P.Parsec Void Text a -> Text -> Either String a
 runP p = first P.errorBundlePretty . P.parse p ""
