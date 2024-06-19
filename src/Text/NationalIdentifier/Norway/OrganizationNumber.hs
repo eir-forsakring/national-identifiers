@@ -18,7 +18,7 @@ newtype OrganizationNumberNO = OrganizationNumberNO {toNineDigits :: Text}
     deriving newtype (ToJSON)
 
 instance FromJSON OrganizationNumberNO where
-    parseJSON = withText "OrganizationNumberNO" $ either fail pure . mkOrganizationNumberNO
+    parseJSON = withText "OrganizationNumberNO" $ pure . OrganizationNumberNO
 
 -- See https://www.brreg.no/om-oss/registrene-vare/om-enhetsregisteret/organisasjonsnummeret/
 mkOrganizationNumberNO :: Text -> Either String OrganizationNumberNO
