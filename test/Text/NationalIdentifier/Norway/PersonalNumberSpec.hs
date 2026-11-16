@@ -17,10 +17,16 @@ spec = describe "mkPersonalNumberNO" $ do
     it "Can parse despite surrounding whitespace" $ do
         toElevenDigits <$> mkPersonalNumberNO "     09043949095" `shouldBe` Right "09043949095"
         toElevenDigits <$> mkPersonalNumberNO "     09043949095\n" `shouldBe` Right "09043949095"
+    it "Can parse a D-number and keeps it unchanged" $ do
+        toElevenDigits <$> mkPersonalNumberNO "70046224378" `shouldBe` Right "70046224378"
 
 invalidSamples :: [Text]
 invalidSamples =
     [ "37052818928"
+    , "40046224378"
+    , "72046224378"
+    , "99046224378"
+    , "71026224378"
     , "170528189231"
     , "1705281892"
     ]

@@ -41,7 +41,11 @@ parsePersonalNumberNO = do
     P.eof
 
     let year = year' + if lopNummer < 500 then 1900 else 2000
-    _birthday <- case fromGregorianValid (fromIntegral year) month dayOfMonth of
+        isDNumber :: Bool
+        isDNumber = dayOfMonth >= 41 && dayOfMonth <= 71
+        birthDay :: Int
+        birthDay = if isDNumber then dayOfMonth - 40 else dayOfMonth
+    _birthday <- case fromGregorianValid (fromIntegral year) month birthDay of
         Nothing -> fail "Invalid birthday"
         Just b -> pure b
     pure . PersonalNumberNO $

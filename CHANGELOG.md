@@ -8,6 +8,8 @@ and this project adheres to the
 
 ## Unreleased
 
+- `mkPersonalNumberNO` accepts D-numbers (day of birth + 40).
+
 ## 0.1.0.0 - YYYY-MM-DD
 
 ## 0.2.0.0 - 2024-05-28
